@@ -19,7 +19,7 @@ function OmdbMovies() {
 
         try {
             const { data: { Search } } = await axios.get(`https://www.omdbapi.com/?s=${searchedMovie}&apikey=${API_KEY}`);
-            const limitedMovies = (Search || []).slice(0, 5);
+            const limitedMovies = (Search || []).slice(0, 12);
             const movieDetails = await Promise.all(
                 limitedMovies.map(async (movie) => {
                     const { data } = await axios.get(`https://www.omdbapi.com/?i=${movie.imdbID}&apikey=${API_KEY}`);
